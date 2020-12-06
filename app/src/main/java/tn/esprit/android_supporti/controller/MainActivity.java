@@ -14,7 +14,6 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 import tn.esprit.android_supporti.R;
-import tn.esprit.android_supporti.controller.Register;
 import tn.esprit.android_supporti.service.RetrofitClient;
 import tn.esprit.android_supporti.service.UserClient;
 
