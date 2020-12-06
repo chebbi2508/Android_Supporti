@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.Accessoire"
+    android:background="@drawable/gradient_bg">
+
+    <EditText
+        android:id="@+id/nomtxt"
+        android:layout_width="387dp"
+        android:layout_height="67dp"
+        android:ems="10"
+        android:hint="Nom Accessoire"
+        android:inputType="textPersonName"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="93dp" />
+
+    <EditText
+        android:id="@+id/prixtxt"
+        android:layout_width="387dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="56dp"
+        android:ems="10"
+        android:hint="Prix"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/desctxt"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <EditText
+        android:id="@+id/imagetxt"
+        android:layout_width="387dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="52dp"
+        android:ems="10"
+        android:hint="image"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/prixtxt"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="12dp" />
+
+    <Button
+        android:id="@+id/addAcc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="Ajouter"
+        app:layout_constraintTop_toBottomOf="@+id/imagetxt"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="70dp" />
+
+    <EditText
+        android:id="@+id/desctxt"
+        android:layout_width="375dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="44dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Description"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toBottomOf="@+id/nomtxt"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="18dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
