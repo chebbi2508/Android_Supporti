@@ -10,14 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".controller.Register" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".controller.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".controller.ReadAccessoire" />
+        <activity android:name=".controller.ReadEquipe" />
+        <activity android:name=".controller.Boutons" />
         <activity android:name=".controller.Accessoire" />
+
+
     </application>
 
 </manifest>

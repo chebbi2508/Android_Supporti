@@ -1,4 +1,4 @@
-package tn.esprit.android_supporti;
+package tn.esprit.android_supporti.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,8 +13,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
-import tn.esprit.android_supporti.controller.Accessoire;
-import tn.esprit.android_supporti.controller.Register;
+import tn.esprit.android_supporti.R;
 import tn.esprit.android_supporti.service.RetrofitClient;
 import tn.esprit.android_supporti.service.UserClient;
 
@@ -101,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void  openActivity2(){
-        Intent intent = new Intent(this, Accessoire.class);
+        Intent intent = new Intent(this, Boutons.class);
         startActivity(intent);
     }
 
