@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void  openActivity2(){
-        Intent intent = new Intent(this, Accessoire.class);
+        Intent intent = new Intent(this, Boutons.class);
         startActivity(intent);
     }
 
