@@ -1,6 +1,7 @@
 package tn.esprit.android_supporti.controller;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -25,7 +26,7 @@ public class ReadAccessoire extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_accessoire);
 
-        listView = findViewById(R.id.listAcc);
+       // listView = findViewById(R.id);
 
         //calling the method to display the heroes
         getAccessoires();
@@ -61,4 +62,10 @@ public class ReadAccessoire extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+
+
 }
