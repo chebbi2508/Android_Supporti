@@ -2,7 +2,9 @@ package tn.esprit.android_supporti.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +18,6 @@ import retrofit2.Retrofit;
 import tn.esprit.android_supporti.R;
 import tn.esprit.android_supporti.service.RetrofitClient;
 import tn.esprit.android_supporti.service.UserClient;
-
 public class MainActivity extends AppCompatActivity {
 
     UserClient myApi;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     EditText email,password;
     Button btn_login;
     Button btn_register;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onStop() {
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openActivity();
+
                // Toast.makeText(MainActivity.this, "test", Toast.LENGTH_SHORT).show();
             }
         });
@@ -92,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
                         if(s.contains("password_user")){
                             Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
                         openActivity2();
+
+
                         }
                         else
                             Toast.makeText(MainActivity.this, "Error: " +s, Toast.LENGTH_SHORT).show(); //Just show error From API

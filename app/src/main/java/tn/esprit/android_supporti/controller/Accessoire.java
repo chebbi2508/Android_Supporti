@@ -78,7 +78,7 @@ public class Accessoire extends AppCompatActivity {
                     desc.setText("");
                     prix.setText("");
                     image.setText("");
-                    openActivityAc();
+                   // openActivityAc();
                 }
                 // Toast.makeText(Register.this, "Bienvenu à SUPPORTI !", Toast.LENGTH_SHORT).show();
 
@@ -88,10 +88,7 @@ public class Accessoire extends AppCompatActivity {
 
 
     }
-    public void  openActivityAc(){
-        Intent intent = new Intent(this, ReadAccessoire.class);
-        startActivity(intent);
-    }
+
 
     private void ajouterAcc (String nom, String desc,int p,String image)
     {

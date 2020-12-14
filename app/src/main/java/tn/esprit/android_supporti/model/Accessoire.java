@@ -2,18 +2,32 @@ package tn.esprit.android_supporti.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Accessoire {
-   // @SerializedName("nom_acc")
+import java.io.Serializable;
+
+public class Accessoire implements Serializable {
+    private int id_acc;
+    @SerializedName("nom_acc")
     private String nom_acc;
+    @SerializedName("prix_acc")
     private int prix_acc;
+    @SerializedName("desc_acc")
     private String desc_acc;
     private String image_acc;
 
-    public Accessoire(String nom_acc, String desc_acc,  int prix_acc,String image_acc) {
+    public Accessoire(int id_acc,String nom_acc, String desc_acc,  int prix_acc,String image_acc) {
+        this.id_acc=id_acc;
         this.nom_acc = nom_acc;
         this.desc_acc = desc_acc;
         this.prix_acc = prix_acc;
         this.image_acc = image_acc;
+    }
+
+    public int getId_acc() {
+        return id_acc;
+    }
+
+    public void setId_acc(int id_acc) {
+        this.id_acc = id_acc;
     }
 
     public String getNom_acc() {
@@ -46,5 +60,15 @@ public class Accessoire {
 
     public void setImage_acc(String image_acc) {
         this.image_acc = image_acc;
+    }
+
+    @Override
+    public String toString() {
+        return "Accessoire{" +
+                "nom_acc='" + nom_acc + '\'' +
+                ", prix_acc=" + prix_acc +
+                ", desc_acc='" + desc_acc + '\'' +
+                ", image_acc='" + image_acc + '\'' +
+                '}';
     }
 }
