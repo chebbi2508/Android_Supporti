@@ -9,7 +9,7 @@
     android:layout_width="70dp"
     android:layout_height="70dp"
     android:scaleType="centerCrop"
-    android:src="@drawable/chebbi_med_anis"
+    android:src="@drawable/profile"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:riv_oval="true"/>

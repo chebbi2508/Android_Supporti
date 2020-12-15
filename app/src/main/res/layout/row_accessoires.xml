@@ -16,7 +16,7 @@
                 android:id="@+id/imageAcc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/orders"
+                android:src="@drawable/mini_shirt"
                 android:layout_centerInParent="true"/>
 
     </RelativeLayout>
@@ -29,7 +29,6 @@
             android:layout_marginStart="60dp"
             android:textColor="@color/colorPrimary"
             android:layout_height="wrap_content" />
-
 
         <ImageView
             android:id="@+id/imageMore"

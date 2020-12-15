@@ -31,6 +31,8 @@
         <activity android:name=".controller.ReadEquipe" />
         <activity android:name=".controller.Accessoire" />
         <activity android:name=".controller.MainActualite" />
+        <activity android:name=".controller.Welcome" />
+
     </application>
 
 </manifest>

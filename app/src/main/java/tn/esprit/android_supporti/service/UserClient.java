@@ -9,6 +9,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import tn.esprit.android_supporti.model.Accessoire;
+import tn.esprit.android_supporti.model.Actualite;
 import tn.esprit.android_supporti.model.Equipe;
 
 
@@ -23,6 +24,8 @@ public interface UserClient {
 
     @GET("/accessoire/")
     Call <List<Accessoire>> getAccessoires();
+    @GET("/actualite/")
+    Call <List<Actualite>> getActualites();
 
 
     @GET("/equipe/")
