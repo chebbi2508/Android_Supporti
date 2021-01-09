@@ -11,6 +11,7 @@ import retrofit2.http.POST;
 import tn.esprit.android_supporti.model.Accessoire;
 import tn.esprit.android_supporti.model.Actualite;
 import tn.esprit.android_supporti.model.Equipe;
+import tn.esprit.android_supporti.model.User;
 
 
 public interface UserClient {
@@ -27,6 +28,8 @@ public interface UserClient {
     @GET("/actualite/")
     Call <List<Actualite>> getActualites();
 
+    @GET("/user/")
+    Call <List<User>> getUsers();
 
     @GET("/equipe/")
     Call <List<Equipe>> getEquipes();

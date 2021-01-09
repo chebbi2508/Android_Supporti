@@ -16,6 +16,8 @@ public class User {
         this.tel_user = tel_user;
         this.password_user = password;
     }
+    public User(){
+    }
 
 
     public String getNom_user() {

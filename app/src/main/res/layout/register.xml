@@ -5,15 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".controller.Register"
-    android:background="@drawable/gradient_bg">
+    android:background="@drawable/backregister">
+
+    <ImageView
+        android:id="@+id/image_acc2"
+        android:layout_width="90dp"
+        android:layout_height="88dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/nomtxt"
+        app:srcCompat="@drawable/mini_supporti"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="16dp" />
 
     <Button
         android:id="@+id/registerbtn2"
-        style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="172dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginEnd="168dp"
+        android:layout_marginBottom="60dp"
+        android:background="@color/colorGreen"
         android:onClick="displayToast"
         android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,40 +34,50 @@
         android:id="@+id/confirmerpasswordtxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:background="@color/colorWhite"
         android:ems="10"
         android:hint="Confirmer Mot de passe"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/registerbtn2"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-16dp" />
+
+        tools:layout_editor_absoluteX="0dp" />
 
     <EditText
         android:id="@+id/emailtxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
         android:ems="10"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/passwordtxt"
         tools:ignore="MissingConstraints"
+        android:background="@color/colorWhite"
+
         tools:layout_editor_absoluteX="0dp" />
 
     <EditText
         android:id="@+id/passwordtxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
         android:ems="10"
         android:hint="Mot de passe"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
+        android:background="@color/colorWhite"
+
         app:layout_constraintBottom_toTopOf="@+id/confirmerpasswordtxt"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
     <EditText
         android:id="@+id/nomtxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
+        android:layout_marginBottom="60dp"
+        android:background="@color/colorWhite"
         android:ems="10"
         android:hint="Nom"
         android:inputType="textEmailAddress"
@@ -69,8 +89,11 @@
         android:id="@+id/prenomtxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
         android:ems="10"
         android:hint="Prenom"
+        android:background="@color/colorWhite"
+
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/teltxt"
         tools:ignore="MissingConstraints"
@@ -80,17 +103,14 @@
         android:id="@+id/teltxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
         android:ems="10"
         android:hint="Téléphone"
+        android:background="@color/colorWhite"
+
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/emailtxt"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp" />
 
-    <ImageView
-        android:id="@+id/main2"
-        tools:ignore="MissingConstraints"
-        android:layout_width="match_parent"
-        android:layout_height="192dp"
-        android:src="@drawable/supporti" />
 </androidx.constraintlayout.widget.ConstraintLayout>

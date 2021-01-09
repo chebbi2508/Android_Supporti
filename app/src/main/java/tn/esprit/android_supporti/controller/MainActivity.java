@@ -10,14 +10,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.List;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import tn.esprit.android_supporti.R;
+import tn.esprit.android_supporti.model.User;
+import tn.esprit.android_supporti.service.ApiClient;
 import tn.esprit.android_supporti.service.RetrofitClient;
 import tn.esprit.android_supporti.service.UserClient;
+
 public class MainActivity extends AppCompatActivity {
 
     UserClient myApi;
@@ -25,7 +34,10 @@ public class MainActivity extends AppCompatActivity {
     EditText email,password;
     Button btn_login;
     Button btn_register;
-    SharedPreferences sharedPreferences;
+
+    private SharedPreferences sharedPreferences;
+    public static final String EXTRA_TEXT = "tn.esprit.android_supporti.file";
+
 
     @Override
     protected void onStop() {
@@ -40,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        sharedPreferences = getSharedPreferences(EXTRA_TEXT, MODE_PRIVATE);
         //Init API
         Retrofit retrofit = RetrofitClient.getInstance();
         myApi = retrofit.create(UserClient.class);
@@ -52,7 +64,11 @@ public class MainActivity extends AppCompatActivity {
         //textfields
         email = findViewById(R.id.editTextTextEmailAddress);
         password = findViewById(R.id.editTextTextPassword);
-
+        //sharedPreferences = getSharedPreferences("testt", Context.MODE_PRIVATE);
+        //sharedPreferences
+       // sharedPreferences = getSharedPreferences("testt", Context.MODE_PRIVATE);
+        //email.setText(sharedPreferences.getString("test", ""));
+        //password.setText(sharedPreferences.getString("test1", ""));
         //Actions
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +77,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Vérifier Votre Données",Toast.LENGTH_SHORT).show();
 
                 }else{
+                    /*
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("test", email.getText().toString());
+                    editor.putString("test1", password.getText().toString());
+                    editor.apply();
+                    */
+                     
                     loginUser(email.getText().toString(),password.getText().toString());
 
                 }
@@ -83,8 +106,26 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Register.class);
         startActivity(intent);
     }
+    public void getListUser(){
+        Call<List<User>> userList= ApiClient.getUserService().getUsers();
+        userList.enqueue(new Callback<List<User>>() {
+            @Override
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                if(response.isSuccessful()){
+                    List<User> userresponse=response.body();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<User>> call, Throwable t) {
+
+            }
+        });
+    }
     //functions
     private void loginUser(String email, String password) {
+        User u = new User();
         compositeDisposable.add(myApi.loginUser(email,password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -94,6 +135,10 @@ public class MainActivity extends AppCompatActivity {
                         //Si el JSON String devuelto contiene encrypted_password quiere decir que se ha obtenido el user correctamente desde la DB
                         if(s.contains("password_user")){
                             Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
+
+                           // Call<List<User>> userList= ApiClient.getUserService().getUsers();
+                            System.out.print("teeeeeeeeeeeeeeeeeeeeeeeeeeessssssttt"+email);
+
                         openActivity2();
 
 
@@ -105,8 +150,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void  openActivity2(){
-        Intent intent = new Intent(this, MainActualite.class);
+        Intent intent = new Intent(this, ReadEquipe.class);
         startActivity(intent);
+    }
+    public void loadClientData(){
+        //sharedPreferences =getApplicationContext().getSharedPreferences("CurrentUser", Context.MODE_PRIVATE);
+
     }
 
 }

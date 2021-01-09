@@ -1,11 +1,12 @@
 package tn.esprit.android_supporti.controller;
 
+import android.content.Context;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -13,46 +14,59 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import tn.esprit.android_supporti.R;
-import tn.esprit.android_supporti.model.Accessoire;
 import tn.esprit.android_supporti.model.Equipe;
-import tn.esprit.android_supporti.service.RetrofitClient2;
+import tn.esprit.android_supporti.service.ApiClient;
 
-public class ReadEquipe extends AppCompatActivity {
-    ListView listView;
+public class ReadEquipe extends AppCompatActivity implements EquipeAdapter.ClickedItem{
+
+    Context mContext;
+    RecyclerView recyclerView;
+    EquipeAdapter equipeAdapter;
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.equipe);
 
-        listView = findViewById(R.id.listeq);
+        recyclerView=findViewById(R.id.recycleview);
+        equipeAdapter=new EquipeAdapter(this::clickedUser);
 
-        //calling the method to display the heroes
-        getEquipe();
+        getListEquipe();
     }
-
-    private void getEquipe() {
-        Call<List<Equipe>> call = RetrofitClient2.getInstance().getMyApi().getEquipes();
-        call.enqueue(new Callback<List<Equipe>>() {
+    public void getListEquipe(){
+        Call<List<Equipe>> equipeList= ApiClient.getUserService().getEquipes();
+        equipeList.enqueue(new Callback<List<Equipe>>() {
             @Override
             public void onResponse(Call<List<Equipe>> call, Response<List<Equipe>> response) {
-                List<Equipe> heroList = response.body();
+                if (response.isSuccessful()){
+                    List<Equipe> equiperesponse=response.body();
+                    equipeAdapter=new EquipeAdapter(mContext,equiperesponse);
+                    equipeAdapter.setData(equiperesponse);
+                    recyclerView.setAdapter(equipeAdapter);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
 
-                //Creating an String array for the ListView
-                String[] heroes = new String[heroList.size()];
-
-                //looping through all the heroes and inserting the names inside the string array
-                for (int i = 0; i < heroList.size(); i++) {
-                    heroes[i] = heroList.get(i).getNom_eq();
                 }
-
-                //displaying the string array into listview
-                listView.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, heroes));
             }
 
             @Override
             public void onFailure(Call<List<Equipe>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("failure",t.getLocalizedMessage());
             }
         });
+    }
+
+
+    @Override
+    public void clickedUser(Equipe equipe) {
+        Log.e("clicked user",equipe.toString());
     }
 }
