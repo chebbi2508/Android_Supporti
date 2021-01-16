@@ -14,15 +14,19 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:hardwareAccelerated="false"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:largeHeap="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AccessoireDetailsActivity"></activity>
+        <activity android:name=".MatchsActivity"></activity>
+        <activity android:name=".AccessoireDetailsActivity" />
+        <activity android:name=".controller.MatchDetailsActivity"></activity>
         <activity android:name=".controller.Register" />
+        <activity android:name=".controller.ModifierUser" />
+
         <activity android:name=".controller.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +37,6 @@
         <activity android:name=".controller.ReadEquipe" />
         <activity android:name=".controller.Accessoire" />
         <activity android:name=".controller.MainActualite" />
-
     </application>
 
 </manifest>

@@ -15,4 +15,5 @@
         android:name="tn.esprit.android_supporti.controller.StoreFragment"
         android:label="Store"
         tools:layout="@layout/fragment_store" />
+
 </navigation>

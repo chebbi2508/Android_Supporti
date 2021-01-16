@@ -1,6 +1,7 @@
 package tn.esprit.android_supporti.model;
 
 public class Equipe {
+    private int id_eq;
     private String nom_eq;
     private String logo_eq;
 
@@ -23,5 +24,13 @@ public class Equipe {
 
     public void setLogo_eq(String logo_eq) {
         this.logo_eq = logo_eq;
+    }
+
+    public int getId_eq() {
+        return id_eq;
+    }
+
+    public void setId_eq(int id_eq) {
+        this.id_eq = id_eq;
     }
 }

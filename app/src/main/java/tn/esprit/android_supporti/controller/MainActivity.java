@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -53,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sharedPreferences = getSharedPreferences(EXTRA_TEXT, MODE_PRIVATE);
+        if(sharedPreferences.contains("User")){
+            openActivity2();
+        }
         //Init API
         Retrofit retrofit = RetrofitClient.getInstance();
         myApi = retrofit.create(UserClient.class);
@@ -125,7 +130,46 @@ public class MainActivity extends AppCompatActivity {
     }
     //functions
     private void loginUser(String email, String password) {
-        User u = new User();
+        User userreq = new User();
+        User userres = new User();
+        userreq.setEmail_user(email);
+        userreq.setPassword_user(password);
+        Call<User>userCall = ApiClient.getUserService().loginUserr(userreq);
+        userCall.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                System.out.println(response.body().getId_user());
+                if(response.body().getNom_user()==null){
+                    Toast.makeText(MainActivity.this,"Account not found",Toast.LENGTH_SHORT);
+
+                }
+                if (response.isSuccessful()){
+                    SharedPreferences.Editor preferencesEditor = sharedPreferences.edit();
+                   User userr= response.body();
+
+                    Gson gson = new Gson();
+
+                    String json = gson.toJson(userr);
+                    System.out.println(json.toString());
+                    preferencesEditor.putString("User", json);
+                    preferencesEditor.apply();
+                    if(response.body().getEquipe_favorite()==0)
+                    openActivity2();
+                    else {
+                        Intent i = new Intent(MainActivity.this, MainActualite.class);
+                        startActivity(i);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(MainActivity.this,"check our netword conn",Toast.LENGTH_SHORT);
+
+            }
+        });
+        /*User u = new User();
         compositeDisposable.add(myApi.loginUser(email,password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -135,18 +179,18 @@ public class MainActivity extends AppCompatActivity {
                         //Si el JSON String devuelto contiene encrypted_password quiere decir que se ha obtenido el user correctamente desde la DB
                         if(s.contains("password_user")){
                             Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
-
                            // Call<List<User>> userList= ApiClient.getUserService().getUsers();
                             System.out.print("teeeeeeeeeeeeeeeeeeeeeeeeeeessssssttt"+email);
 
-                        openActivity2();
+
+
 
 
                         }
                         else
                             Toast.makeText(MainActivity.this, "Error: " +s, Toast.LENGTH_SHORT).show(); //Just show error From API
                     }
-                }));
+                }));*/
 
     }
     public void  openActivity2(){

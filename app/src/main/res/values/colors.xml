@@ -7,6 +7,8 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorPrimaryGreen">#32CD32</color>
     <color name="colorGreen">#52B788</color>
+    <color name="red">#e63946</color>
+    <color name="orange">#f4a261</color>
 
 </resources>
 

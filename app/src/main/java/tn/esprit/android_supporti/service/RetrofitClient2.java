@@ -8,7 +8,7 @@ public class RetrofitClient2 {
     private UserClient myApi;
 
     private RetrofitClient2() {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:5000/")
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.43.245:5000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         myApi = retrofit.create(UserClient.class);
